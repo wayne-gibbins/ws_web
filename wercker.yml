@@ -2,7 +2,7 @@ services:
     - redis
     - id: mattapi
       url: file://../api#dev
-      cmd: /bin/bash -c "python $WERCKER_SOURCE_DIR/main.py"
+      cmd: python /pipeline/source/main.py
 box: python:2.7
 build:
   steps:
