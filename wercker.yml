@@ -4,10 +4,10 @@ services:
       url: file://../api#dev
       cmd: python /pipeline/source/main.py
 box: python:2.7
-build:
+dev:
   steps:
     - pip-install
-    - script:
+    - internal/watch:
         name: start web server
-        code: |
-            python app.py
+        code: python app.py
+        reload: false
