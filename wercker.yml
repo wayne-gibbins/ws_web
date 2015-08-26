@@ -2,7 +2,7 @@ services:
     - redis
     - id: mattapi
       url: file://../api#dev
-      cmd: python /pipeline/source/main.py
+      cmd: python /pipeline/source/app.py
 box: python:2.7
 dev:
   steps:
