@@ -1,13 +1,13 @@
 services:
     - redis
     - id: mattapi
-      url: file://../api#dev
+      url: file://../ws_api#dev
       cmd: python /pipeline/source/app.py
 box: python:2.7
 dev:
-  steps:
-    - pip-install
-    - internal/watch:
-        name: start web server
-        code: python app.py
-        reload: false
+    steps:
+        - pip-install
+        - internal/watch:
+            name: start web server
+            code: python app.py
+            reload: false
