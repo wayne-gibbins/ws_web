@@ -1,13 +1,30 @@
-services:
+box: python:2.7
+dev:
+  services:
     - redis
     - id: mattapi
       url: file://../ws_api#dev
       cmd: python /pipeline/source/app.py
-box: python:2.7
-dev:
-    steps:
-        - pip-install
-        - internal/watch:
-            name: start web server
-            code: python app.py
-            reload: false
+
+  steps:
+    - pip-install
+    - internal/watch:
+        name: start web server
+        code: python app.py
+        reload: false
+build:
+  services:
+    - redis
+    - tonnu/mattapi
+  steps:
+    - virtualenv
+    - pip-install
+    - script:
+        name: python unit test
+        code: |
+          python app_test.py
+    - script:
+        name: copy artifacts
+        code: |
+          cp app.py requirements.txt $WERCKER_OUTPUT_DIR
+
