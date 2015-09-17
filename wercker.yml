@@ -27,4 +27,13 @@ build:
         name: copy artifacts
         code: |
           cp app.py requirements.txt $WERCKER_OUTPUT_DIR
-
+deploy:
+  box: python:2.7-slim
+  steps:
+    - pip-install
+    - internal/docker-push:
+      username: $docker_user
+      password: $docker_pass
+      repository: tonnu/ws_web
+      cmd: python /pipeline/source/app.py
+      ports: "5001"
