@@ -11,7 +11,7 @@ dev:
     - internal/watch:
         name: start web server
         code: python app.py
-        reload: false
+        reload: true
 build:
   services:
     - redis
