@@ -30,7 +30,7 @@ deploy:
    - script:
        name: copy
        code: mkdir /app && cp hello-task-definition.json /app/
-   - 1science/aws-ecs:
+   - tonnu/aws-ecs:
       key: $AWS_ACCESS_KEY
       secret: $AWS_SECRET_KEY
       region: us-east-1
