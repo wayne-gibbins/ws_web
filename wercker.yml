@@ -38,3 +38,4 @@ deploy:
       service-name: hello
       task-definition-name: hello
       task-definition-file: /app/hello-task-definition.json
+      minimum-running-tasks: 1
