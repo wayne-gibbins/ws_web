@@ -4,7 +4,7 @@
       "links": [
         "mattapi"
       ],
-      "image": "tonnu/frontend",
+      "image": "tonnu/ws_web",
       "essential": true,
       "portMappings": [
         {
@@ -28,6 +28,6 @@
       "image": "redis",
       "cpu": 10,
       "memory": 500,
-      "essential": true,
+      "essential": true
     }
 ]

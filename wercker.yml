@@ -25,9 +25,9 @@ build:
         code: |
           cp wercker-app.json hello-task-definition.json app.py requirements.txt $WERCKER_OUTPUT_DIR
     - internal/docker-push:
-          username: $docker_user
-          password: $docker_pass
-          repository: tonnu/frontend
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+          repository: tonnu/ws_web
           cmd: "python /app/app.py"
 deploy:
   box: python:2.7-slim
