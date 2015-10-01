@@ -27,7 +27,7 @@ build:
     - internal/docker-push:
           username: $docker_user
           password: $docker_pass
-          repository: wercker/frontend
+          repository: tonnu/frontend
           cmd: "python /app/app.py"
 deploy:
   box: python:2.7-slim
