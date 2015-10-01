@@ -22,29 +22,27 @@ build:
     - script:
         name: copy artifacts
         code: |
-          cp wercker-app.json hello-task-definition.json app.py requirements.txt $WERCKER_OUTPUT_DIR
+          cp wercker-app.json app.py requirements.txt $WERCKER_OUTPUT_DIR
 deploy:
   box: python:2.7-slim
   dockerhub:
-    steps:
-      - pip-install
-      - internal/docker-push:
-            username: $DOCKER_USER
-            password: $DOCKER_PASS
-            repository: wercker/frontend
-            cmd: "python /pipeline/source/app.py"
-            ports: 5001
+  - pip-install
+  - internal/docker-push:
+      username: $DOCKER_USER
+      password: $DOCKER_PASS
+      repository: wercker/frontend
+      cmd: "python /pipeline/source/app.py"
+      ports: 5001
   aws-ecs:
-    steps:
-     - script:
-         name: copy
-         code: mkdir /app && cp wercker-app.json /app/
-     - tonnu/aws-ecs:
-        key: $AWS_ACCESS_KEY
-        secret: $AWS_SECRET_KEY
-        region: us-east-1
-        cluster-name: default
-        service-name: hello
-        task-definition-name: wercker-counter
-        task-definition-file: /app/wercker-app.json
-        minimum-running-tasks: 1
+  - script:
+      name: copy
+      code: mkdir /app && cp wercker-app.json /app/
+  - tonnu/aws-ecs:
+      key: $AWS_ACCESS_KEY
+      secret: $AWS_SECRET_KEY
+      region: us-east-1
+      cluster-name: default
+      service-name: hello
+      task-definition-name: wercker-counter
+      task-definition-file: /app/wercker-app.json
+      minimum-running-tasks: 1
