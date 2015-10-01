@@ -28,7 +28,7 @@ def counter_tpl(counter):
 
 @app.route("/")
 def index():
-    count_resp = requests.get('http://mattapi:5002/').text
+    count_resp = requests.get('http://api:5002/').text
     counter = int(json.loads(count_resp).get("counter", -1))
     counter *= 5 * 10 ** 8
     if request_wants_json():

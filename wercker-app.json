@@ -2,9 +2,9 @@
     {
       "name": "frontend",
       "links": [
-        "mattapi"
+        "api"
       ],
-      "image": "tonnu/ws_web",
+      "image": "wercker/frontend",
       "essential": true,
       "portMappings": [
         {
@@ -16,8 +16,8 @@
       "cpu": 10
     },
     {
-      "name": "mattapi",
-      "image": "tonnu/mattapi",
+      "name": "api",
+      "image": "wercker/api",
       "cpu": 10,
       "memory": 500,
       "essential": true,

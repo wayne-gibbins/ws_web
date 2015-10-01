@@ -30,7 +30,7 @@ build:
     - internal/docker-push:
           username: $DOCKER_USER
           password: $DOCKER_PASS
-          repository: tonnu/ws_web
+          repository: wercker/frontend
           cmd: "python /pipeline/source/app.py"
           ports: 5001
 deploy:
