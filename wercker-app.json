@@ -17,7 +17,7 @@
     },
     {
       "name": "mattapi",
-      "image": "tonnu/ws_api",
+      "image": "tonnu/mattapi",
       "cpu": 10,
       "memory": 500,
       "essential": true,
