@@ -23,13 +23,18 @@ build:
     - script:
         name: copy artifacts
         code: |
-          cp hello-task-definition.json $WERCKER_OUTPUT_DIR
+          cp wercker-app.json hello-task-definition.json app.py requirements.txt $WERCKER_OUTPUT_DIR
+    - internal/docker-push:
+          username: $docker_user
+          password: $docker_pass
+          repository: wercker/frontend
+          cmd: "python /app/app.py"
 deploy:
   box: python:2.7-slim
   steps:
    - script:
        name: copy
-       code: mkdir /app && cp hello-task-definition.json /app/
+       code: mkdir /app && cp hello-task-definition.json wercker-app.json /app/
    - tonnu/aws-ecs:
       key: $AWS_ACCESS_KEY
       secret: $AWS_SECRET_KEY
@@ -37,5 +42,5 @@ deploy:
       cluster-name: default
       service-name: hello
       task-definition-name: hello
-      task-definition-file: /app/hello-task-definition.json
+      task-definition-file: /app/wercker-app.json
       minimum-running-tasks: 1
