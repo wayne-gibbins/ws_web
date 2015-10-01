@@ -32,6 +32,7 @@ build:
           password: $DOCKER_PASS
           repository: tonnu/ws_web
           cmd: "python /pipeline/source/app.py"
+          ports: 80
 deploy:
   box: python:2.7-slim
   steps:
