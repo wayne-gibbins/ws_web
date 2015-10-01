@@ -18,23 +18,26 @@ build:
     - redis
     - tonnu/mattapi
   steps:
-    - virtualenv
     - pip-install
     - script:
         name: copy artifacts
         code: |
           cp wercker-app.json hello-task-definition.json app.py requirements.txt $WERCKER_OUTPUT_DIR
+    - script:
+        name: copy artifacts2
+        code: |
+          mkdir /app && cp app.py /app
     - internal/docker-push:
           username: $DOCKER_USER
           password: $DOCKER_PASS
           repository: tonnu/ws_web
-          cmd: "python /app/app.py"
+          cmd: "python /pipeline/source/app.py"
 deploy:
   box: python:2.7-slim
   steps:
    - script:
        name: copy
-       code: mkdir /app && cp hello-task-definition.json wercker-app.json /app/
+       code: mkdir /app && cp app.py hello-task-definition.json wercker-app.json /app/
    - tonnu/aws-ecs:
       key: $AWS_ACCESS_KEY
       secret: $AWS_SECRET_KEY

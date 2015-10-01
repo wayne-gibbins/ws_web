@@ -21,7 +21,8 @@
       "cpu": 10,
       "memory": 500,
       "essential": true,
-      "links": [ "redis" ]
+      "links": [ "redis" ],
+      "command": ["python", "/pipeline/source/app.py"]
     },
     {
       "name": "redis",
