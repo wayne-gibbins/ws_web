@@ -3,7 +3,7 @@ no-response-timeout: 15
 dev:
   services:
     - redis
-    - id: mattapi
+    - id: api
       url: file://../ws_api#dev
       cmd: python /pipeline/source/app.py
 
@@ -16,7 +16,7 @@ dev:
 build:
   services:
     - redis
-    - tonnu/mattapi
+    - wercker/api
   steps:
     - pip-install
     - script:
@@ -42,7 +42,7 @@ deploy:
       secret: $AWS_SECRET_KEY
       region: us-east-1
       cluster-name: default
-      service-name: hello
+      service-name: wercker
       task-definition-name: wercker-counter
       task-definition-file: /app/wercker-app.json
       minimum-running-tasks: 1
