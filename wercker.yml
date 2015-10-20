@@ -23,6 +23,8 @@ build:
         name: copy artifacts
         code: |
           cp wercker-app.json app.py requirements.txt $WERCKER_OUTPUT_DIR
+    - internal/store-container
+
 deploy:
   box: python:2.7-slim
   dockerhub:

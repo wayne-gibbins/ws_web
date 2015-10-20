@@ -30,7 +30,7 @@ def counter_tpl(counter):
 def index():
     count_resp = requests.get('http://api:5002/').text
     counter = int(json.loads(count_resp).get("counter", -1))
-    # counter *= 5 * 10 ** 8
+    #counter *= 5 * 10 ** 8
     if request_wants_json():
         return jsonify(counter=counter)
     return counter_tpl(counter)
