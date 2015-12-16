@@ -34,7 +34,7 @@ deploy:
       repository: wercker
       cmd: "python /pipeline/source/app.py"
       ports: 5001
-      registry: "694210971302.dkr.ecr.us-east-1.amazonaws.com"
+      registry: "694210971302.dkr.ecr.us-east-1.amazonaws.com/wercker:latest"
   aws-ecs:
   - script:
       name: copy
