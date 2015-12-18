@@ -31,9 +31,9 @@ deploy:
   - internal/docker-push:
       username: $DOCKER_USER
       password: $DOCKER_PASS
-      repository: wercker
       cmd: "python /pipeline/source/app.py"
       ports: 5001
+      tag: "694210971302.dkr.ecr.us-east-1.amazonaws.com/wercker:latest"
       registry: "694210971302.dkr.ecr.us-east-1.amazonaws.com/wercker:latest"
   aws-ecs:
   - script:
