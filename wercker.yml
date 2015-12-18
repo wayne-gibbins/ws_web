@@ -32,9 +32,10 @@ deploy:
       username: $DOCKER_USER
       password: $DOCKER_PASS
       cmd: "python /pipeline/source/app.py"
+      registry: "wercker:latest"
       ports: 5001
       tag: "694210971302.dkr.ecr.us-east-1.amazonaws.com/wercker:latest"
-      registry: "694210971302.dkr.ecr.us-east-1.amazonaws.com/wercker:latest"
+      registry: "694210971302.dkr.ecr.us-east-1.amazonaws.com"
   aws-ecs:
   - script:
       name: copy
